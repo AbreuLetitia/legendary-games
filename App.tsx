@@ -1,18 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Navigator from './src/navigation';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
-}
+    const [loaded] = useFonts({
+        brutalBold: require('./src/assets/fonts/brutal-bold.ttf'),
+        brutalRegular: require('./src/assets/fonts/brutal-regular.ttf'),
+        brutalMedium: require('./src/assets/fonts/brutal-medium.ttf'),
+        brutalLight: require('./src/assets/fonts/brutal-light.ttf'),
+        brutalThin: require('./src/assets/fonts/brutal-thin.ttf'),
+    });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    if (!loaded) {
+        return null;
+    }
+
+    return (
+        <SafeAreaProvider>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+                <Navigator />
+            </GestureHandlerRootView>
+        </SafeAreaProvider>
+    );
+}
