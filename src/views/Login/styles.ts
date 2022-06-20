@@ -7,5 +7,11 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 20,
         alignItems: 'center',
         backgroundColor: '#333',
+    },
+    checkBoxContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
     }
 });

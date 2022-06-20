@@ -71,12 +71,7 @@ export const Login = () => {
 
             <Spacer amount={4} />
             <View
-                style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    width: '100%',
-                }}
+                style={styles.checkBoxContainer}
             >
                 <CheckBox
                     text={'Remember me'}

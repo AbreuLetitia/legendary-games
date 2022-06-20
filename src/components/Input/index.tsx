@@ -7,9 +7,7 @@ export const Input = ({ ...rest}: TextInputProps) => {
 
     return (
         <TextInput
-        // onChangeText={onChangeText}
             style={[styles.textInput, { borderColor: validationEmail ? Colors.Red : Colors.MediumGrey }]}
-            // placeholder={placeholder}
             placeholderTextColor={Colors.Grey}
             {...rest}
         />
