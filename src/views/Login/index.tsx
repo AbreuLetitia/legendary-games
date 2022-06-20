@@ -84,6 +84,18 @@ export const Login = () => {
             <Spacer amount={6} />
 
             <Button enabled={enabled} title={'LOG IN NOW'} onPress={onLogin} />
+            <Spacer amount={6} />
+            <Text onPress={onForgotPassword} font="brutalRegular" size={17}>
+          Privacy Policy
+            </Text>
+            <Spacer amount={4} />
+            <Text onPress={onForgotPassword} font="brutalRegular" size={17}>
+              Dont have a Legendary Games Account? Sign Up
+            </Text>
+            <Spacer amount={2} />
+            <Text onPress={onForgotPassword} font="brutalRegular" size={17}>
+              Back to all sign in options.
+            </Text>
         </SafeAreaView>
     );
 };
