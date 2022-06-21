@@ -1,6 +1,6 @@
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Path, SvgProps } from 'react-native-svg';
 
-export const EpicGames = (props) => (
+export const EpicGames = (props: SvgProps) => (
     <Svg
         viewBox='0 0 648 751'
         width={64}

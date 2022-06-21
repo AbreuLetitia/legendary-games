@@ -1,9 +1,9 @@
 import { RectButton } from 'react-native-gesture-handler';
-import { Colors } from '../constants/Colors';
 import { Text } from '../Text';
 import { styles } from './styles';
+import { buttonProps } from './types';
 
-export const Button = ({ onPress, title, enabled }) => {
+export const Button = ({ onPress, title, enabled }: buttonProps) => {
     return (
         <RectButton
             enabled={enabled}

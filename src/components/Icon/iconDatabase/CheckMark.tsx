@@ -1,6 +1,6 @@
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Path, SvgProps } from 'react-native-svg';
 
-export const CheckMark = (props) => (
+export const CheckMark = (props: SvgProps) => (
     <Svg
         height="27"
         viewBox="0 0 24 24"

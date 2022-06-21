@@ -3,7 +3,7 @@ import { Colors } from '../constants/Colors';
 import { styles } from './styles';
 
 export const Input = ({ ...rest}: TextInputProps) => {
-    const validationEmail = '';
+    const validationEmail = ''; /* remove it later */
 
     return (
         <TextInput

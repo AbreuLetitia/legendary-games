@@ -10,24 +10,10 @@ import { Input } from '../../components/Input';
 import { Spacer } from '../../components/Spacer';
 import { Text } from '../../components/Text';
 import { styles } from './styles';
+import { formHelper } from './_helpers/form.Helper';
 
 export const Login = () => {
-    const [form, setForm] = useState([
-        {
-            key: 'email',
-            value: '',
-            placeholder: 'Email',
-            touched: false,
-            error: false,
-        },
-        {
-            key: 'password',
-            value: '',
-            placeholder: 'Password',
-            touched: false,
-            error: false,
-        },
-    ]);
+    const [form, setForm] = useState(formHelper);
 
     const [email, password] = form;
 
@@ -50,6 +36,18 @@ export const Login = () => {
 
     const onForgotPassword = () => {
         console.log('Forgot Password');
+    };
+
+    const onSignUp = () => {
+        console.log('Sign Up');
+    };
+
+    const onPrivacyPolicy = () => {
+        console.log('Privacy Policy');
+    };
+
+    const onBackHandler = () => {
+        console.log('Back');
     };
 
     return (
@@ -85,15 +83,19 @@ export const Login = () => {
 
             <Button enabled={enabled} title={'LOG IN NOW'} onPress={onLogin} />
             <Spacer amount={6} />
-            <Text onPress={onForgotPassword} font="brutalRegular" size={17}>
+            <Text onPress={onPrivacyPolicy} font="brutalRegular" size={17} textDecorationLine='underline'>
           Privacy Policy
             </Text>
-            <Spacer amount={4} />
-            <Text onPress={onForgotPassword} font="brutalRegular" size={17}>
-              Dont have a Legendary Games Account? Sign Up
+            <Spacer amount={5} />
+            <Text font="brutalRegular" size={17} >
+              Dont have a Legendary Games Account?
             </Text>
-            <Spacer amount={2} />
-            <Text onPress={onForgotPassword} font="brutalRegular" size={17}>
+            <Spacer amount={1} />
+            <Text onPress={onSignUp} font="brutalRegular" size={17} textDecorationLine='underline' >
+              Sign Up
+            </Text>
+            <Spacer amount={5} />
+            <Text onPress={onBackHandler} font="brutalRegular" size={17} textDecorationLine='underline'>
               Back to all sign in options.
             </Text>
         </SafeAreaView>

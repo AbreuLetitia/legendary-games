@@ -5,11 +5,16 @@ import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { styles } from './styles';
 
-export const CheckBox = ({ onPress, text }) => {
-    const [checked, setChecked]=useState(false);
+interface checkBoxProps {
+  text: string;
+  onPress: (checked: boolean) => void;
+}
+
+export const CheckBox = ({ onPress, text } : checkBoxProps) => {
+    const [checked, setChecked] = useState (false);
     return   (
         <View style={styles.container}>
-            <TouchableWithoutFeedback onPress={()=>
+            <TouchableWithoutFeedback onPress = {() =>
             {
                 setChecked(!checked);
                 onPress(checked);}}>
