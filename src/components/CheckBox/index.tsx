@@ -10,29 +10,31 @@ interface checkBoxProps {
   onPress: (checked: boolean) => void;
 }
 
-export const CheckBox = ({ onPress, text } : checkBoxProps) => {
-    const [checked, setChecked] = useState (false);
-    return   (
-        <View style={styles.container}>
-            <TouchableWithoutFeedback onPress = {() =>
+export const CheckBox = ({ onPress, text }: checkBoxProps) => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <View style={styles.container}>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          setChecked(!checked);
+          onPress(checked);
+        }}
+      >
+        <View
+          style={[
+            styles.checkBoxStyle,
             {
-                setChecked(!checked);
-                onPress(checked);}}>
-                <View
-                    style={[
-                        styles.checkBoxStyle,
-                        {
-                            backgroundColor: checked ? Colors.Blue : 'transparent',
-                            borderColor: checked ? Colors.Black : Colors.MediumGrey,
-                        },
-                    ]}
-                >
-                    { checked && <Icon name={'CheckMark'} />}
-                </View>
-            </TouchableWithoutFeedback>
-            <Text font="brutalRegular" color="Grey" size={17}>
-                {text}
-            </Text>
+              backgroundColor: checked ? Colors.Blue : 'transparent',
+              borderColor: checked ? Colors.Black : Colors.MediumGrey,
+            },
+          ]}
+        >
+          {checked && <Icon name={'CheckMark'} />}
         </View>
-    );
+      </TouchableWithoutFeedback>
+      <Text font="brutalRegular" color="Grey" size={17}>
+        {text}
+      </Text>
+    </View>
+  );
 };
