@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from '../../components/constants/Colors';
 
 export const styles = StyleSheet.create({
   registerContainer: {
@@ -6,7 +7,7 @@ export const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     alignItems: 'center',
-    backgroundColor: '#333',
+    backgroundColor: Colors.DarkGrey,
   },
   fullNameContainer: {
     width: '100%',

@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ArrowBack } from '../../components/ArrowBack';
 
 import { Button } from '../../components/Button';
 import { CheckBox } from '../../components/CheckBox';
@@ -58,7 +59,8 @@ export const Login = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spacer amount={8} />
+      <ArrowBack onPress={onBackHandler} />
+      <Spacer amount={2} />
       <Icon name={'EpicGames'} />
       <Spacer amount={6} />
       <Text font="brutalBold">Sign in with a Legendary Games Account.</Text>
@@ -83,10 +85,10 @@ export const Login = () => {
           Forgot Your Password
         </Text>
       </View>
-      <Spacer amount={6} />
+      <Spacer amount={4} />
 
       <Button enabled={enabled} title={'LOG IN NOW'} onPress={onLogin} />
-      <Spacer amount={6} />
+      <Spacer amount={4} />
       <Text
         onPress={onPrivacyPolicy}
         font="brutalRegular"
@@ -95,7 +97,7 @@ export const Login = () => {
       >
         Privacy Policy
       </Text>
-      <Spacer amount={5} />
+      <Spacer amount={4} />
       <Text font="brutalRegular" size={17}>
         Dont have a Legendary Games Account?
       </Text>
@@ -109,14 +111,14 @@ export const Login = () => {
         Sign Up
       </Text>
       <Spacer amount={5} />
-      <Text
+      {/* <Text
         onPress={onBackHandler}
         font="brutalRegular"
         size={17}
         textDecorationLine="underline"
       >
         Back to all sign in options.
-      </Text>
+      </Text> */}
     </SafeAreaView>
   );
 };

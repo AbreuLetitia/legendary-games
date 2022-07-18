@@ -1,5 +1,6 @@
 import { TextInput, TextInputProps, View } from 'react-native';
 import { Colors } from '../constants/Colors';
+import { height, width } from '../constants/Responsive';
 import { Text } from '../Text';
 // import { Icon } from '../Icon';
 import { styles } from './styles';
@@ -17,11 +18,10 @@ export const Input = ({
   ...rest
 }: InputProps) => {
   return (
-    // <>
     <View
       style={[
         styles.textInput,
-        { width: small ? '45%' : '100%' },
+        { width: small ? width(45) : width(90) },
         {
           borderColor: validationField ? Colors.Red : Colors.MediumGrey,
         },
@@ -29,11 +29,10 @@ export const Input = ({
     >
       <TextInput placeholderTextColor={Colors.Grey} {...rest} />
       {
-        <Text font="brutalBold" size={13} color="Red">
+        <Text font="brutalBold" size={height(5)} color="Red">
           {messege}
         </Text>
       }
     </View>
-    // </>
   );
 };

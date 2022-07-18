@@ -172,7 +172,7 @@ export const Register = () => {
           onBlur={() => onBlur(FormIndexes.displayName)}
           onFocus={() => onFocus(FormIndexes.displayName)}
           placeholder={'Display Name'}
-          messege={}
+          messege={'faz um breakdown pra mim'}
         />
         <Spacer amount={4} />
         <Input onChangeText={() => ''} placeholder={'Email'} />
@@ -216,15 +216,15 @@ export const Register = () => {
           </Text>
         </View>
         <Spacer amount={1} />
-        <Text
+        {/* <Text
           onPress={onBackHandler}
           font="brutalRegular"
           size={17}
           textDecorationLine="underline"
         >
           Back to all sign in options.
-        </Text>
-        <Spacer amount={4} />
+        </Text> */}
+        <Spacer amount={2} />
       </SafeAreaView>
     </ScrollView>
   );
