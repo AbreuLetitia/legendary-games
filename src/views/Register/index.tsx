@@ -203,19 +203,19 @@ export const Register = () => {
         </Text>
         <Spacer amount={3} />
         <View style={styles.signInLink}>
-          <Text font="brutalRegular" size={17}>
+          <Text font="brutalRegular" size={16}>
             Have a Legendary Games Account?
           </Text>
           <Text
             onPress={onSignIn}
             font="brutalRegular"
-            size={17}
+            size={16}
             textDecorationLine="underline"
           >
             Sign In
           </Text>
+          <Spacer amount={1} />
         </View>
-        <Spacer amount={1} />
         {/* <Text
           onPress={onBackHandler}
           font="brutalRegular"

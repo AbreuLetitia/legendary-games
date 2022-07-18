@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { TouchableWithoutFeedback, View } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { Icon } from '../Icon';
+import { Spacer } from '../Spacer';
 import { Text } from '../Text';
 import { styles } from './styles';
 
@@ -52,7 +53,8 @@ export const DropDown = ({
         <View style={styles.optionsContainer}>
           {filteredOptions.map((option, index) => (
             <RectButton onPress={() => onOptionPress(option)} key={index}>
-              <Text font="brutalRegular" color="White">
+              <Spacer amount={1} />
+              <Text size={16} font="brutalRegular" color="White">
                 {option}
               </Text>
             </RectButton>
