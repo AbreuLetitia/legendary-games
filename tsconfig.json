@@ -5,6 +5,7 @@
     "useUnknownInCatchVariables": false,
     "noUnusedLocals": false,
     "strict": true,
+    "jsx": "react-jsx",
     "types": [
       "jest"
     ],

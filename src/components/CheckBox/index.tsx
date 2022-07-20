@@ -12,14 +12,15 @@ interface checkBoxProps {
 
 export const CheckBox = ({ onPress, text }: checkBoxProps) => {
   const [checked, setChecked] = useState(false);
+
+  const onPressChecker = () => {
+    setChecked(!checked);
+    onPress(checked);
+  };
+
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback
-        onPress={() => {
-          setChecked(!checked);
-          onPress(checked);
-        }}
-      >
+      <TouchableWithoutFeedback onPress={onPressChecker}>
         <View
           style={[
             styles.checkBoxStyle,
@@ -29,7 +30,7 @@ export const CheckBox = ({ onPress, text }: checkBoxProps) => {
             },
           ]}
         >
-          {checked && <Icon name={'CheckMark'} />}
+          {checked && <Icon name="CheckMark" />}
         </View>
       </TouchableWithoutFeedback>
       <Text font="brutalRegular" color="Grey" size={17}>
