@@ -5,15 +5,15 @@ import views from './views';
 const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-                {views.map(({ component, name }) => (
-                    <Stack.Screen key={name} {...{ component, name }} />
-                ))}
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {views.map(({ component, name }) => (
+          <Stack.Screen key={name} {...{ component, name }} />
+        ))}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
 export default Navigator;

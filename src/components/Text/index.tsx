@@ -9,18 +9,32 @@ interface TextProps {
   size?: number;
   onPress?: () => void;
   textDecorationLine?: 'underline' | 'none';
+  small?: boolean;
+  regular?: boolean;
 }
 
-export const Text = ({ children, onPress , color = 'White', font, size = 20, textDecorationLine}: TextProps) => (
-    <RNText
-        onPress={onPress}
-        style={{
-            fontFamily: font,
-            color: Colors[color],
-            fontSize: size,
-            textDecorationLine: textDecorationLine,
-        }}
-    >
-        {children}
-    </RNText>
+export const Text = ({
+  children,
+  onPress,
+  color = 'White',
+  font,
+  size = 20,
+  textDecorationLine,
+  small,
+  regular,
+  ...rest
+}: TextProps) => (
+  <RNText
+    onPress={onPress}
+    style={{
+      fontFamily: font,
+      color: Colors[color],
+      fontSize: size,
+      textDecorationLine: textDecorationLine,
+      width: (small && '45%') || (regular && '90%'),
+    }}
+    {...rest}
+  >
+    {children}
+  </RNText>
 );
