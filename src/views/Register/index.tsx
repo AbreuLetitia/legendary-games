@@ -21,7 +21,7 @@ import { mockCountries } from './_helpers/mockedContries';
 
 export const Register = () => {
   const [form, setForm] = useState(initialFormField);
-  const [checked, setChecked] = useState(false);
+  const [TermsOfService, setTermsOfService] = useState(false);
 
   const updateForm = (
     fieldIndex: FormIndexes,
@@ -78,7 +78,7 @@ export const Register = () => {
       return field.errorMessage === '';
     });
 
-    return checked && isFieldValid;
+    return TermsOfService && isFieldValid;
   };
 
   return (
@@ -147,7 +147,7 @@ export const Register = () => {
           <Spacer amount={4} />
           <CheckBox
             text="I read and agree to the terms of service."
-            onPress={setChecked}
+            onPress={setTermsOfService}
           />
         </View>
         <Spacer amount={4} />

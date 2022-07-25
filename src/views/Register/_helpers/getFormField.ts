@@ -1,9 +1,6 @@
 import { FormIndexes } from '../types';
-import { FormField } from './initialState';
+import { FormField } from './initialFormField';
 
-export const getFormField = (
-  form: FormField[], // change to formField Type.
-  fieldIndex: FormIndexes
-) => {
+export const getFormField = (form: FormField[], fieldIndex: FormIndexes) => {
   return form[fieldIndex];
 };
