@@ -15,7 +15,7 @@ export const CheckBox = ({ onPress, text }: checkBoxProps) => {
 
   const onPressChecker = () => {
     setChecked(!checked);
-    onPress(checked);
+    onPress(!checked);
   };
 
   return (

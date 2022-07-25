@@ -8,7 +8,11 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.MediumGrey,
     borderRadius: 4,
+  },
+  inputStyle: {
     padding: width(6),
+    width: '100%',
+    height: '100%',
     color: Colors.White,
   },
 });
