@@ -14,13 +14,13 @@ import { NAVIGATORS } from '../../navigation/constants';
 
 import { styles } from './styles';
 import { FormFieldKey, FormIndexes } from './types';
-import { initialFormState } from './_helpers/initialState';
+import { initialFormField } from './_helpers/initialFormField';
 import { validateFormField } from './_helpers/validateFormField';
 import { getFormField } from './_helpers/getFormField';
 import { mockCountries } from './_helpers/mockedContries';
 
 export const Register = () => {
-  const [form, setForm] = useState(initialFormState);
+  const [form, setForm] = useState(initialFormField);
   const [checked, setChecked] = useState(false);
 
   const updateForm = (
@@ -69,11 +69,11 @@ export const Register = () => {
     console.log('Privacy Policy');
   };
 
-  const onReceiveNews = () =>
-    // send to API
-    console.log('Receive News');
+  const onReceiveNews = () => {
+    //TODO: send to API
+  };
 
-  const enabled = () => {
+  const enableConfirmButton = () => {
     const isFieldValid = form.every((field) => {
       return field.errorMessage === '';
     });
@@ -100,7 +100,7 @@ export const Register = () => {
             onChangeText={(value) => onFieldChange(value, FormIndexes.name)}
             onBlur={() => onBlur(FormIndexes.name)}
             onFocus={() => onFocus(FormIndexes.name)}
-            message={form[FormIndexes.displayName].errorMessage}
+            errorMessage={form[FormIndexes.displayName].errorMessage}
             placeholder={'Name'}
           />
           <Input
@@ -109,7 +109,7 @@ export const Register = () => {
             placeholder={'Last Name'}
             onBlur={() => onBlur(FormIndexes.lastName)}
             onFocus={() => onFocus(FormIndexes.lastName)}
-            message={form[FormIndexes.lastName].errorMessage}
+            errorMessage={form[FormIndexes.lastName].errorMessage}
           />
         </View>
         <Spacer amount={4} />
@@ -120,7 +120,7 @@ export const Register = () => {
           onBlur={() => onBlur(FormIndexes.displayName)}
           onFocus={() => onFocus(FormIndexes.displayName)}
           placeholder={'Display Name'}
-          message={form[FormIndexes.displayName].errorMessage}
+          errorMessage={form[FormIndexes.displayName].errorMessage}
         />
         <Spacer amount={4} />
         <Input
@@ -128,14 +128,14 @@ export const Register = () => {
           placeholder={'Email'}
           onBlur={() => onBlur(FormIndexes.email)}
           onFocus={() => onFocus(FormIndexes.email)}
-          message={form[FormIndexes.email].errorMessage}
+          errorMessage={form[FormIndexes.email].errorMessage}
         />
         <Spacer amount={4} />
         <Input
           onChangeText={(value) => onFieldChange(value, FormIndexes.password)}
           onBlur={() => onBlur(FormIndexes.password)}
           onFocus={() => onFocus(FormIndexes.password)}
-          message={form[FormIndexes.password].errorMessage}
+          errorMessage={form[FormIndexes.password].errorMessage}
           placeholder={'Password'}
         />
         <Spacer amount={4} />
@@ -151,7 +151,11 @@ export const Register = () => {
           />
         </View>
         <Spacer amount={4} />
-        <Button enabled={enabled()} onPress={handlerNextTep} title="CONTINUE" />
+        <Button
+          enabled={enableConfirmButton()}
+          onPress={handlerNextTep}
+          title="CONTINUE"
+        />
         <Spacer amount={4} />
         <Text
           onPress={onPrivacyPolicy}

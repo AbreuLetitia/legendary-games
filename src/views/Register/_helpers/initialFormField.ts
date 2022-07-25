@@ -1,4 +1,4 @@
-export interface InitialFormState {
+export interface FormField {
   id: string;
   value: string;
   placeholder: string;
@@ -6,7 +6,7 @@ export interface InitialFormState {
   small: boolean;
 }
 
-export const initialFormState: InitialFormState[] = [
+export const initialFormField: FormField[] = [
   {
     id: 'name',
     value: '',

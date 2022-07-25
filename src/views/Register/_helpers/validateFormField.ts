@@ -1,10 +1,10 @@
 import { regexCheckEmail } from '../../../utils/regex';
 import { FormIndexes } from '../types';
 import { getFormField } from './getFormField';
-import { InitialFormState } from './initialState';
+import { FormField } from './initialFormField';
 
 export const validateFormField = (
-  form: InitialFormState[],
+  form: FormField[],
   fieldIndex: FormIndexes
 ): string => {
   const { value } = getFormField(form, fieldIndex);
