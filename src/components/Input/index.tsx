@@ -1,36 +1,34 @@
 import { TextInput, TextInputProps, View } from 'react-native';
 import { Colors } from '../constants/Colors';
-import { height, width } from '../constants/Responsive';
+import { width } from '../constants/Responsive';
 import { Text } from '../Text';
 // import { Icon } from '../Icon';
 import { styles } from './styles';
 
 export interface InputProps extends TextInputProps {
   small?: boolean;
-  messege?: string;
-  validationField?: boolean;
+  message?: string;
 }
 
-export const Input = ({
-  validationField = false,
-  messege,
-  small,
-  ...rest
-}: InputProps) => {
+export const Input = ({ message, small, ...rest }: InputProps) => {
   return (
     <View
       style={[
         styles.textInput,
-        { width: small ? width(45) : width(90) },
+        { width: small ? '45%' : '100%' },
         {
-          borderColor: validationField ? Colors.Red : Colors.MediumGrey,
+          borderColor: message ? Colors.Red : Colors.MediumGrey,
         },
       ]}
     >
-      <TextInput placeholderTextColor={Colors.Grey} {...rest} />
+      <TextInput
+        style={styles.inputStyle}
+        placeholderTextColor={Colors.Grey}
+        {...rest}
+      />
       {
-        <Text font="brutalBold" size={height(5)} color="Red">
-          {messege}
+        <Text font="brutalRegular" size={width(4)} color="Red">
+          {message}
         </Text>
       }
     </View>

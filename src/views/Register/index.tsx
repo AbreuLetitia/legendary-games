@@ -11,35 +11,17 @@ import { Input } from '../../components/Input';
 import { Spacer } from '../../components/Spacer';
 import { Text } from '../../components/Text';
 import { NAVIGATORS } from '../../navigation/constants';
-import { regexCheckEmail } from '../../utils/regex';
+
 import { styles } from './styles';
+import { FormFieldKey, FormIndexes } from './types';
 import { initialFormState } from './_helpers/initialState';
-
-export type FormFieldKey =
-  | 'id'
-  | 'value'
-  | 'placeholder'
-  | 'errorMessage'
-  | 'small';
-
-export enum FormIndexes {
-  name,
-  lastName,
-  displayName,
-  email,
-  password,
-}
+import { validateFormField } from './_helpers/validateFormField';
+import { getFormField } from './_helpers/getFormField';
+import { mockCountries } from './_helpers/mockedContries';
 
 export const Register = () => {
   const [form, setForm] = useState(initialFormState);
-  const [errorMessage, setErrorMessage] = useState('');
-  const mockCountries = [
-    'Brazil',
-    'French',
-    'Italy',
-    'Australia',
-    'United State',
-  ];
+  const [checked, setChecked] = useState(false);
 
   const updateForm = (
     fieldIndex: FormIndexes,
@@ -51,71 +33,24 @@ export const Register = () => {
     setForm(newForm);
   };
 
-  const getFormField = (fieldIndex: FormIndexes) => {
-    return form[fieldIndex];
-  };
-
-  const validateFormField = (fieldIndex: FormIndexes): string => {
-    const { value } = getFormField(fieldIndex);
-
-    switch (fieldIndex) {
-      case FormIndexes.name:
-        if (value === '') return 'name is required';
-        if (value.length < 3) return 'name must be at leat 3 characters';
-        return '';
-
-      case FormIndexes.lastName:
-        if (value === '') return 'last name is required';
-        if (value.length < 3) return 'name must be at leat 3 characters';
-        return '';
-
-      case FormIndexes.displayName:
-        if (value === '') return 'display name is required';
-        if (value.length < 3) return 'name must be at leat 3 characters';
-        return '';
-
-      case FormIndexes.email:
-        if (value === '') return 'email is required';
-        if (value.length < 3) return 'email must be at leat 3 characters';
-        if (!value.match(regexCheckEmail)) return 'email is invalid';
-        return '';
-
-      case FormIndexes.password:
-        if (value === '') return 'password is required';
-        if (value.length < 7) return 'password must be at least 7 characters';
-        if (!RegExp(/[A-Z]/).test(value))
-          return 'password must contain at least one uppercase letter';
-        if (!RegExp(/[0-9]/).test(value))
-          return 'password must contain at least one number';
-        if (!RegExp(/[!@#$%^&*(.),?":{}|<>]/).test(value))
-          return 'password must contain at least one special character';
-        return '';
-
-      default:
-        return '';
-    }
-  };
-
   const { navigate } = useNavigation();
   const { goBack } = useNavigation();
 
   const onBlur = (fieldIndex: FormIndexes) => {
-    const { value } = getFormField(fieldIndex);
+    const errorMessage = validateFormField(form, fieldIndex);
 
-    if (value !== '') {
+    updateForm(fieldIndex, 'errorMessage', errorMessage);
+
+    if (errorMessage === '') {
       // TODO: Integrate API when its ready
       return;
     }
-
-    updateForm(fieldIndex, 'errorMessage', validateFormField(fieldIndex));
-    setErrorMessage(validateFormField(fieldIndex));
   };
 
   const onFocus = (fieldIndex: FormIndexes) => {
-    const { value } = getFormField(fieldIndex);
+    const { value } = getFormField(form, fieldIndex);
 
-    !value &&
-      updateForm(fieldIndex, 'errorMessage', validateFormField(fieldIndex));
+    value || updateForm(fieldIndex, 'errorMessage', '');
   };
 
   const onFieldChange = (value: string, fieldIndex: FormIndexes) => {
@@ -126,8 +61,6 @@ export const Register = () => {
     console.log('CONTINUE');
   };
 
-  const enabled = true;
-
   const onSignIn = () => {
     navigate(NAVIGATORS.REGISTER as never);
   };
@@ -136,12 +69,17 @@ export const Register = () => {
     console.log('Privacy Policy');
   };
 
-  const onBackHandler = () => {
-    console.log('Back');
-  };
+  const onReceiveNews = () =>
+    // send to API
+    console.log('Receive News');
 
-  const onReceiveNews = () => '';
-  const onTermsOfService = () => '';
+  const enabled = () => {
+    const isFieldValid = form.every((field) => {
+      return field.errorMessage === '';
+    });
+
+    return checked && isFieldValid;
+  };
 
   return (
     <ScrollView>
@@ -157,11 +95,21 @@ export const Register = () => {
         <DropDown options={mockCountries} />
         <Spacer amount={3} />
         <View style={styles.fullNameContainer}>
-          <Input small={true} onChangeText={() => ''} placeholder={'Name'} />
           <Input
             small={true}
-            onChangeText={() => ''}
+            onChangeText={(value) => onFieldChange(value, FormIndexes.name)}
+            onBlur={() => onBlur(FormIndexes.name)}
+            onFocus={() => onFocus(FormIndexes.name)}
+            message={form[FormIndexes.displayName].errorMessage}
+            placeholder={'Name'}
+          />
+          <Input
+            small={true}
+            onChangeText={(value) => onFieldChange(value, FormIndexes.lastName)}
             placeholder={'Last Name'}
+            onBlur={() => onBlur(FormIndexes.lastName)}
+            onFocus={() => onFocus(FormIndexes.lastName)}
+            message={form[FormIndexes.lastName].errorMessage}
           />
         </View>
         <Spacer amount={4} />
@@ -172,12 +120,24 @@ export const Register = () => {
           onBlur={() => onBlur(FormIndexes.displayName)}
           onFocus={() => onFocus(FormIndexes.displayName)}
           placeholder={'Display Name'}
-          messege={'faz um breakdown pra mim'}
+          message={form[FormIndexes.displayName].errorMessage}
         />
         <Spacer amount={4} />
-        <Input onChangeText={() => ''} placeholder={'Email'} />
+        <Input
+          onChangeText={(value) => onFieldChange(value, FormIndexes.email)}
+          placeholder={'Email'}
+          onBlur={() => onBlur(FormIndexes.email)}
+          onFocus={() => onFocus(FormIndexes.email)}
+          message={form[FormIndexes.email].errorMessage}
+        />
         <Spacer amount={4} />
-        <Input onChangeText={() => ''} placeholder={'Password'} />
+        <Input
+          onChangeText={(value) => onFieldChange(value, FormIndexes.password)}
+          onBlur={() => onBlur(FormIndexes.password)}
+          onFocus={() => onFocus(FormIndexes.password)}
+          message={form[FormIndexes.password].errorMessage}
+          placeholder={'Password'}
+        />
         <Spacer amount={4} />
         <View>
           <CheckBox
@@ -187,11 +147,11 @@ export const Register = () => {
           <Spacer amount={4} />
           <CheckBox
             text="I read and agree to the terms of service."
-            onPress={onTermsOfService}
+            onPress={setChecked}
           />
         </View>
         <Spacer amount={4} />
-        <Button enabled={enabled} onPress={handlerNextTep} title="CONTINUE" />
+        <Button enabled={enabled()} onPress={handlerNextTep} title="CONTINUE" />
         <Spacer amount={4} />
         <Text
           onPress={onPrivacyPolicy}
@@ -216,14 +176,6 @@ export const Register = () => {
           </Text>
           <Spacer amount={1} />
         </View>
-        {/* <Text
-          onPress={onBackHandler}
-          font="brutalRegular"
-          size={17}
-          textDecorationLine="underline"
-        >
-          Back to all sign in options.
-        </Text> */}
         <Spacer amount={2} />
       </SafeAreaView>
     </ScrollView>
