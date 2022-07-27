@@ -1,26 +1,18 @@
-export interface InitialFormState {
+export interface FormField {
   id: string;
   value: string;
   placeholder: string;
   errorMessage: string;
   small: boolean;
-  // errorMessageList: {
-  //   requiredReason: string;
-  //   invalidReason: string;
-  // };
 }
 
-export const initialFormState: InitialFormState[] = [
+export const initialFormField: FormField[] = [
   {
     id: 'name',
     value: '',
     placeholder: 'Name',
     errorMessage: '',
     small: true,
-    //   errorMessageList: {
-    //     requiredReason: 'Name is required',
-    //     invalidReason: 'too Short',
-    // },
   },
   {
     id: 'lastName',
@@ -28,10 +20,6 @@ export const initialFormState: InitialFormState[] = [
     placeholder: 'Last Name',
     errorMessage: '',
     small: true,
-    //   errorMessageList: {
-    //     requiredReason: 'Last Name is required',
-    //     invalidReason: 'too Short',
-    // },
   },
   {
     id: 'displayName',

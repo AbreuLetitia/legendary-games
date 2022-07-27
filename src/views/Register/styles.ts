@@ -5,7 +5,7 @@ import { width } from '../../components/constants/Responsive';
 export const styles = StyleSheet.create({
   registerContainer: {
     width: width(100),
-    paddingHorizontal: width(6),
+    paddingHorizontal: width(5),
     alignItems: 'center',
     backgroundColor: Colors.DarkGrey,
   },
