@@ -12,6 +12,7 @@ import { Input } from '../../components/Input';
 import { Spacer } from '../../components/Spacer';
 import { Text } from '../../components/Text';
 import { NAVIGATORS } from '../../navigation/constants';
+import { checkHasRegisterApi } from '../../services/register-service';
 import { styles } from './styles';
 import { formHelper } from './_helpers/form.Helper';
 
@@ -24,9 +25,7 @@ export const Login = () => {
 
   const enabled = email.value.length > 0 && password.value.length > 0;
 
-  const onLogin = () => {
-    console.log('Login');
-  };
+  const onLogin = async () => '';
 
   const onHandlerEmail = (value: string) => {
     setForm(

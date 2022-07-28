@@ -1,12 +1,11 @@
 import axios from 'axios';
 
+// TODO: Add BASEURL when backend is ready
+
 const instance = axios.create({
-  baseURL: '',
+  baseURL: 'http://placekitten.com/',
 });
 
-export const authInstance = axios.create({
-  baseURL: 'localhost:3000',
-  auth: undefined,
-});
+// TODO (POC): export const authInstance
 
 export default instance;
