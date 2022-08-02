@@ -4,6 +4,8 @@ import Navigator from './src/navigation';
 import { useLoadFonts } from './src/hooks/useLoadFonts';
 import { styles } from './appStyles';
 import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
 
 export default function App() {
   const [loaded] = useLoadFonts();
@@ -15,7 +17,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={styles.appStyle}>
-        <Navigator />
+        <Provider store={store}>
+          <Navigator />
+        </Provider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
   );
