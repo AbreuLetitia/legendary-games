@@ -25,8 +25,8 @@ import { addUser } from '../../store/userManage';
 export const Register = () => {
   const [form, setForm] = useState(initialFormField);
   const [TermsOfService, setTermsOfService] = useState(false);
-  const selector = useSelector((store: IStore) => store.registeredUsers);
-
+  const selector = useSelector((store: IStore) => store.user);
+  const { navigate, goBack } = useNavigation();
   const dispatch = useDispatch();
 
   const updateForm = (
@@ -50,9 +50,6 @@ export const Register = () => {
     return userData;
   };
 
-  const { navigate } = useNavigation();
-  const { goBack } = useNavigation();
-
   const onBlur = (fieldIndex: FormIndexes) => {
     const errorMessage = validateFormField(form, fieldIndex);
 
@@ -74,7 +71,7 @@ export const Register = () => {
     updateForm(fieldIndex, 'value', value);
   };
 
-  const handlerNextStep = () => {
+  const nextStepHandler = () => {
     dispatch(addUser(getUserData()));
     console.log(selector);
   };
@@ -171,7 +168,7 @@ export const Register = () => {
         <Spacer amount={4} />
         <Button
           enabled={enableConfirmButton()}
-          onPress={handlerNextStep}
+          onPress={nextStepHandler}
           title="CONTINUE"
         />
         <Spacer amount={4} />

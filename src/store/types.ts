@@ -7,5 +7,5 @@ export type ActionCreator<state, payload> = CaseReducer<
 >;
 
 export interface IStore {
-  registeredUsers: IUserState;
+  user: IUserState;
 }

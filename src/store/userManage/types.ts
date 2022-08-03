@@ -10,6 +10,6 @@ export interface IUserState {
 
 type UserActionCreator<payload> = ActionCreator<IUserState, payload>;
 
-export type IUserActions = {
+export type UserActions = {
   addUser: UserActionCreator<IUserState>;
 };

@@ -4,6 +4,6 @@ import userReducer from './userManage';
 
 export const store = configureStore({
   reducer: {
-    registeredUsers: userReducer,
+    users: userReducer,
   },
 });
