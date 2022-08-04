@@ -18,10 +18,16 @@ import { initialFormField } from './_helpers/initialFormField';
 import { validateFormField } from './_helpers/validateFormField';
 import { getFormField } from './_helpers/getFormField';
 import { mockCountries } from './_helpers/mockedContries';
+import { useDispatch, useSelector } from 'react-redux';
+import { IStore } from '../../store/types';
+import { addUser } from '../../store/userManage';
 
 export const Register = () => {
   const [form, setForm] = useState(initialFormField);
   const [TermsOfService, setTermsOfService] = useState(false);
+  const selector = useSelector((store: IStore) => store.user);
+  const { navigate, goBack } = useNavigation();
+  const dispatch = useDispatch();
 
   const updateForm = (
     fieldIndex: FormIndexes,
@@ -33,8 +39,16 @@ export const Register = () => {
     setForm(newForm);
   };
 
-  const { navigate } = useNavigation();
-  const { goBack } = useNavigation();
+  let userData: any;
+  const getUserData = () => {
+    form.forEach((field) => {
+      userData = {
+        ...userData,
+        [field.id]: field.value,
+      };
+    });
+    return userData;
+  };
 
   const onBlur = (fieldIndex: FormIndexes) => {
     const errorMessage = validateFormField(form, fieldIndex);
@@ -57,8 +71,9 @@ export const Register = () => {
     updateForm(fieldIndex, 'value', value);
   };
 
-  const handlerNextTep = () => {
-    console.log('CONTINUE');
+  const nextStepHandler = () => {
+    dispatch(addUser(getUserData()));
+    console.log(selector);
   };
 
   const onSignIn = () => {
@@ -153,7 +168,7 @@ export const Register = () => {
         <Spacer amount={4} />
         <Button
           enabled={enableConfirmButton()}
-          onPress={handlerNextTep}
+          onPress={nextStepHandler}
           title="CONTINUE"
         />
         <Spacer amount={4} />
