@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { TouchableWithoutFeedback, View } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
-import { Icon } from '../Icon';
-import { Spacer } from '../Spacer';
-import { Text } from '../Text';
+import { Colors } from '../Theme/Colors';
+import { Icon } from '../Icon/Icon';
+import { Spacer } from '../Spacer/Spacer';
+import { Text } from '../Text/Text';
 import { styles } from './styles';
 
 interface DropDownProps {
@@ -42,13 +43,27 @@ export const DropDown = ({
         onPress={onDropDownPress}
         style={styles.dropDownContainer}
       >
-        <View style={styles.selectedOptionContainer}>
-          <Text font="brutalRegular" color="White">
-            {selected}
-          </Text>
-          <Icon name="ArrowDown" />
+        <View
+          style={[
+            styles.selectedContainer,
+            {
+              borderColor: open ? Colors.White : Colors.MediumGrey,
+              borderWidth: open ? 1.5 : 1,
+            },
+          ]}
+        >
+          <View style={styles.selectedOptionContainer}>
+            <Text size={14} color="White" font="brutalRegular">
+              Country
+            </Text>
+            <Text font="brutalRegular" color="White" size={16}>
+              {selected}
+            </Text>
+          </View>
+          <Icon name={open ? 'ArrowUp' : 'ArrowDown'} />
         </View>
       </TouchableWithoutFeedback>
+      <Spacer amount={0.5} />
       {open && (
         <View style={styles.optionsContainer}>
           {filteredOptions.map((option, index) => (

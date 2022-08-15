@@ -1,5 +1,5 @@
 import Svg, { Path, SvgProps } from 'react-native-svg';
-import { Colors } from '../../constants/Colors';
+import { Colors } from '../../Theme/Colors';
 
 export const EyeIcon = (props: SvgProps) => (
   <Svg viewBox="0 0 24 24" aria-hidden="true" {...props} color={Colors.Blue}>

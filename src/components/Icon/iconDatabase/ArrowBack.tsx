@@ -1,5 +1,5 @@
 import Svg, { Path } from 'react-native-svg';
-import { colorNames, Colors } from '../../constants/Colors';
+import { colorNames, Colors } from '../../Theme/Colors';
 
 interface ArrowBackProps {
   fill: colorNames;

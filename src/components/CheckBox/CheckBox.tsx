@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { TouchableWithoutFeedback, View } from 'react-native';
-import { Colors } from '../constants/Colors';
-import { Icon } from '../Icon';
-import { Text } from '../Text';
+import { Colors } from '../Theme/Colors';
+import { Icon } from '../Icon/Icon';
+import { Text } from '../Text/Text';
 import { styles } from './styles';
 
 interface checkBoxProps {
@@ -33,7 +33,7 @@ export const CheckBox = ({ onPress, text }: checkBoxProps) => {
           {checked && <Icon name="CheckMark" />}
         </View>
       </TouchableWithoutFeedback>
-      <Text font="brutalRegular" color="Grey" size={17}>
+      <Text font="brutalRegular" color="Grey" size={18}>
         {text}
       </Text>
     </View>

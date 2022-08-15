@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from '../constants/Colors';
-import { height, width } from '../constants/Responsive';
+import { Colors } from '../Theme/Colors';
+import { height, width } from '../Theme/Responsive';
 
 export const styles = StyleSheet.create({
   container: {
@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.MediumGrey,
     borderRadius: 4,
-    width: width(8),
-    height: height(4),
+    width: width(6),
+    height: height(3),
     marginRight: width(2),
   },
 });

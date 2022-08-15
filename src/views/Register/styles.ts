@@ -1,23 +1,23 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from '../../components/constants/Colors';
-import { width } from '../../components/constants/Responsive';
+import { Colors } from '../../components/Theme/Colors';
+import { width } from '../../components/Theme/Responsive';
 
 export const styles = StyleSheet.create({
   registerContainer: {
-    width: width(100),
     paddingHorizontal: width(5),
     alignItems: 'center',
     backgroundColor: Colors.DarkGrey,
   },
   fullNameContainer: {
-    width: width(90),
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  checkBoxContainer: {
+    width: '100%',
+  },
   signInLink: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    width: width(90),
     paddingHorizontal: width(6),
+    alignItems: 'center',
   },
 });

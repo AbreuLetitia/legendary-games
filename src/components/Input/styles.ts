@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from '../constants/Colors';
-import { height, width } from '../constants/Responsive';
+import { Colors } from '../Theme/Colors';
+import { height, width } from '../Theme/Responsive';
 
 export const styles = StyleSheet.create({
   textInput: {
@@ -11,8 +11,6 @@ export const styles = StyleSheet.create({
   },
   inputStyle: {
     padding: width(6),
-    width: '100%',
-    height: '100%',
     color: Colors.White,
   },
 });
