@@ -14,7 +14,6 @@ export const ArrowDown = ({ ...props }: ArrowDownProps) => (
       cy="12"
       r="12"
       transform="rotate(-90 12 12)"
-      // fill={Colors.MediumGrey}
       fill-opacity="0.45"
     />
     <Path
