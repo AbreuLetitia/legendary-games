@@ -2,15 +2,14 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ArrowBack } from '../../components/ArrowBack';
-import { Button } from '../../components/Button';
-import { CheckBox } from '../../components/CheckBox';
-import { DropDown } from '../../components/DropDown';
-import { Icon } from '../../components/Icon';
-import { Input } from '../../components/Input';
-import { Spacer } from '../../components/Spacer';
-import { Text } from '../../components/Text';
-import { NAVIGATORS } from '../../navigation/constants';
+import { ArrowBack } from '../../components';
+import { Button } from '../../components';
+import { CheckBox } from '../../components';
+import { DropDown } from '../../components';
+import { Icon } from '../../components';
+import { Input } from '../../components';
+import { Spacer } from '../../components';
+import { Text } from '../../components';
 
 import { styles } from './styles';
 import { FormFieldKey, FormIndexes } from './types';
@@ -21,6 +20,8 @@ import { mockCountries } from './_helpers/mockedContries';
 import { useDispatch, useSelector } from 'react-redux';
 import { IStore } from '../../store/types';
 import { addUser } from '../../store/userManage';
+import { NAVIGATORS } from '../../navigation/constants';
+import { width } from '../../components/Theme/Responsive';
 
 export const Register = () => {
   const [form, setForm] = useState(initialFormField);
@@ -77,7 +78,7 @@ export const Register = () => {
   };
 
   const onSignIn = () => {
-    navigate(NAVIGATORS.REGISTER as never);
+    navigate(NAVIGATORS.LOGIN as never);
   };
 
   const onPrivacyPolicy = () => {
@@ -89,11 +90,13 @@ export const Register = () => {
   };
 
   const enableConfirmButton = () => {
-    const isFieldValid = form.every((field) => {
-      return field.errorMessage === '';
-    });
-
-    return TermsOfService && isFieldValid;
+    return (
+      TermsOfService &&
+      form.every((field) => {
+        const fieldVerify = field.errorMessage === '' && field.value !== '';
+        return fieldVerify;
+      })
+    );
   };
 
   return (
@@ -102,7 +105,7 @@ export const Register = () => {
         <ArrowBack onPress={() => goBack()} />
         <Spacer amount={1} />
         <Icon name={'EpicGames'} />
-        <Spacer amount={3} />
+        <Spacer amount={2} />
         <Text font="brutalBold" color="White">
           Sign Up
         </Text>
@@ -115,7 +118,7 @@ export const Register = () => {
             onChangeText={(value) => onFieldChange(value, FormIndexes.name)}
             onBlur={() => onBlur(FormIndexes.name)}
             onFocus={() => onFocus(FormIndexes.name)}
-            errorMessage={form[FormIndexes.displayName].errorMessage}
+            errorMessage={form[FormIndexes.name].errorMessage}
             placeholder={'Name'}
           />
           <Input
@@ -152,9 +155,10 @@ export const Register = () => {
           onFocus={() => onFocus(FormIndexes.password)}
           errorMessage={form[FormIndexes.password].errorMessage}
           placeholder={'Password'}
+          secureTextEntry={true}
         />
         <Spacer amount={4} />
-        <View>
+        <View style={styles.checkBoxContainer}>
           <CheckBox
             text="I would like to receive news, surveys and special offers from Legendary Games"
             onPress={onReceiveNews}
@@ -180,7 +184,7 @@ export const Register = () => {
         >
           Privacy Policy
         </Text>
-        <Spacer amount={3} />
+        <Spacer amount={2} />
         <View style={styles.signInLink}>
           <Text font="brutalRegular" size={16}>
             Have a Legendary Games Account?

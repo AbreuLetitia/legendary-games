@@ -1,4 +1,4 @@
-import instance from '..';
+import instance from '../../../../services';
 
 export const checkHasRegisterApi = async () => {
   try {

@@ -1,8 +1,9 @@
 import { TextInput, TextInputProps, View } from 'react-native';
-import { Colors } from '../constants/Colors';
-import { width } from '../constants/Responsive';
-import { Text } from '../Text';
+import { Colors } from '../Theme/Colors';
+import { width } from '../Theme/Responsive';
+import { Text } from '../Text/Text';
 import { styles } from './styles';
+import { Spacer } from '../Spacer/Spacer';
 
 export interface InputProps extends TextInputProps {
   small?: boolean;
@@ -26,9 +27,12 @@ export const Input = ({ errorMessage, small, ...rest }: InputProps) => {
         {...rest}
       />
       {
-        <Text font="brutalRegular" size={width(4)} color="Red">
-          {errorMessage}
-        </Text>
+        <>
+          <Spacer amount={0.5} />
+          <Text font="brutalRegular" size={width(3.5)} color="Red">
+            {errorMessage}
+          </Text>
+        </>
       }
     </View>
   );

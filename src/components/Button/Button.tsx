@@ -1,5 +1,5 @@
 import { RectButton } from 'react-native-gesture-handler';
-import { Text } from '../Text';
+import { Text } from '../Text/Text';
 import { styles } from './styles';
 import { buttonProps } from './types';
 

@@ -1,6 +1,6 @@
 import { Text as RNText } from 'react-native';
-import { colorNames, Colors } from '../constants/Colors';
-import { typographyNames } from '../constants/Typography';
+import { colorNames, Colors } from '../Theme/Colors';
+import { typographyNames } from '../Theme/Typography';
 
 interface TextProps {
   children: React.ReactNode;

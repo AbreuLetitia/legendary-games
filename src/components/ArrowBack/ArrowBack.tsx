@@ -1,6 +1,6 @@
 import { RectButton } from 'react-native-gesture-handler';
-import { Icon } from '../Icon';
-import { Spacer } from '../Spacer';
+import { Icon } from '../Icon/Icon';
+import { Spacer } from '../Spacer/Spacer';
 import { styles } from './styles';
 
 export const ArrowBack = ({ onPress }) => (

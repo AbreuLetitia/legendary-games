@@ -1,20 +1,19 @@
 import * as React from 'react';
 import Svg, { Circle, Path } from 'react-native-svg';
-import { colorNames, Colors } from '../../constants/Colors';
+import { colorNames, Colors } from '../../Theme/Colors';
 
 interface ArrowDownProps {
   fill: colorNames;
   inner: colorNames;
 }
 
-export const ArrowDown = ({ fill, inner, ...props }: ArrowDownProps) => (
-  <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
+export const ArrowDown = ({ ...props }: ArrowDownProps) => (
+  <Svg width="15" height="24" viewBox="0 0 24 24" {...props}>
     <Circle
       cx="12"
       cy="12"
       r="12"
       transform="rotate(-90 12 12)"
-      fill={Colors.MediumGrey}
       fill-opacity="0.45"
     />
     <Path

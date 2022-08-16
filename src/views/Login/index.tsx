@@ -2,17 +2,16 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ArrowBack } from '../../components/ArrowBack';
+import { ArrowBack } from '../../components/ArrowBack/ArrowBack';
 
-import { Button } from '../../components/Button';
-import { CheckBox } from '../../components/CheckBox';
+import { Button } from '../../components/Button/Button';
+import { CheckBox } from '../../components/CheckBox/CheckBox';
 
-import { Icon } from '../../components/Icon';
-import { Input } from '../../components/Input';
-import { Spacer } from '../../components/Spacer';
-import { Text } from '../../components/Text';
+import { Icon } from '../../components/Icon/Icon';
+import { Input } from '../../components/Input/Input';
+import { Spacer } from '../../components/Spacer/Spacer';
+import { Text } from '../../components/Text/Text';
 import { NAVIGATORS } from '../../navigation/constants';
-import { checkHasRegisterApi } from '../../services/register-service';
 import { styles } from './styles';
 import { formHelper } from './_helpers/form.Helper';
 
@@ -25,7 +24,7 @@ export const Login = () => {
 
   const enabled = email.value.length > 0 && password.value.length > 0;
 
-  const onLogin = async () => '';
+  const onLogin = () => '';
 
   const onHandlerEmail = (value: string) => {
     setForm(

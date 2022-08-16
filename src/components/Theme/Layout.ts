@@ -14,7 +14,7 @@ interface ILayout {
   isSmallDevice: boolean;
 }
 
-const Layout: ILayout = {
+export const Layout: ILayout = {
   paddingHorizontal: width * (5 / 100),
   window: {
     width,
@@ -25,5 +25,3 @@ const Layout: ILayout = {
   activeOpacty: 0.6,
   rippleColor: Colors.Grey,
 };
-
-export default Layout;

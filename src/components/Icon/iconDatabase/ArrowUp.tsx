@@ -1,13 +1,12 @@
-import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
-import { colorNames, Colors } from '../../constants/Colors';
+import { colorNames, Colors } from '../../Theme/Colors';
 
 interface IconProps {
   fill: colorNames;
 }
 
-export const ArrowUp = ({ fill, ...props }: IconProps) => (
-  <Svg width="17" height="10" viewBox="0 0 17 10" fill="none" {...props}>
+export const ArrowUp = ({ ...props }: IconProps) => (
+  <Svg width="15" height="24" viewBox="0 0 24 24" {...props}>
     <Path
       d="M8.49973 2.91379L2.20672 9.20679C2.0192 9.39426 1.76489 9.49957 1.49972 9.49957C1.23456 9.49957 0.980253
       9.39426 0.792725 9.20679C0.605254 9.01926 0.499939 8.76495 0.499939 8.49979C0.499939 8.23462 0.605254 7.98031
